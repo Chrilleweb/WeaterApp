@@ -62,6 +62,13 @@ searchBox.addEventListener('input', async function() {
     });
 });
 
+searchBox.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        suggestions.innerHTML = '';
+    }
+});
+
+
 
 searchBox.addEventListener('keypress', setQuery);
 
