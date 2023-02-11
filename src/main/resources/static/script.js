@@ -29,6 +29,7 @@ function setQuery(e) {
     }
 }
 
+
 function displayResults(weather) {
     const city = document.getElementById("city");
     city.innerText = `${weather.name}, ${weather.sys.country ? weather.sys.country : '' }`;
@@ -42,6 +43,7 @@ function displayResults(weather) {
     const hilow = document.getElementById("hilow");
     hilow.innerText = `${Math.round(weather.main.temp_max) + "°c"} / ${Math.round(weather.main.temp_min) + "°c"}`;
 }
+
 
 function createDate(date) {
     const day = days[date.getDay()];
@@ -78,3 +80,7 @@ async function getWeatherByGeo(latitude, longitude) {
         showError(err);
     }
 }
+
+window.addEventListener("load", function() {
+    getWeather("Copenhagen");
+});
