@@ -10,7 +10,7 @@ const suggestions = document.querySelector('.suggestions');
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const weatherImages = {
-    rain: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHfLVNIGNCHjQijc2waBRY8tR871OtKv5GMQ&usqp=CAU',
+    rain: 'https://brownsvilleradio.com/wp-content/uploads/2017/08/heavy-rainfall-sky.jpg',
     sunny: 'https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/325918_2200-1200x628.jpg',
     clouds: 'https://t3.ftcdn.net/jpg/03/50/73/14/360_F_350731454_3WcZ5ng9Lyj6qkMAq7qwdoHjgF6s8Oe2.jpg',
     haze: 'https://cdn-free-legacy.tv2i.dk/2015/12/23/20151223-143506-2_0.jpg?rect=0%2C368%2C4096%2C2301&w=624&h=351&fit=crop&auto=format',
