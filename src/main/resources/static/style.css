@@ -55,17 +55,18 @@ main {
 .temp {
     font-size: 46px;
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .weather {
     font-size: 28px;
-    color: #333;
+    color: #fff;
     margin-bottom: 20px;
 }
 
 .hi-low {
     font-size: 18px;
-    color: #333;
+    color: #fff;
 }
 
 footer {
