@@ -1,0 +1,85 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #f8f9fa;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333945;
+    color: #fff;
+}
+
+.search-box {
+    width: 60%;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    margin: 0 auto;
+    text-align: center;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.location {
+    color: #333;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.city {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.current {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 25%;
+}
+
+.temp {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.weather {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.hi-low {
+    font-size: 18px;
+    color: #333;
+}
+
+footer {
+    background-color: #333945;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.copyright {
+    font-size: 14px;
+}
+
+
