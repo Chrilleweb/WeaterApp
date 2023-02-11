@@ -5,6 +5,8 @@ const api = {
 
 const notificationEl = document.querySelector('.notification');
 const searchBox = document.querySelector('.search-box');
+const searchField = document.querySelector('.search-field');
+const suggestions = document.querySelector('.suggestions');
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -20,6 +22,36 @@ async function getWeather(city) {
         showError(err);
     }
 }
+
+async function searchCities(searchTerm) {
+    try {
+        const queryURL = `https://api.openweathermap.org/data/2.5/find?q=${searchTerm}&type=like&sort=population&cnt=30&appid=${api.key}`;
+        const res = await fetch(queryURL);
+        const cities = await res.json();
+        console.log(cities);
+        return cities;
+    } catch(err) {
+        console.error(err);
+        return [];
+    }
+}
+
+
+searchBox.addEventListener('input', async function() {
+    const searchTerm = this.value;
+    const cities = await searchCities(searchTerm);
+    suggestions.innerHTML = '';
+    cities.list.forEach(city => {
+        const suggestion = document.createElement('div');
+        suggestion.innerText = `${city.name}, ${city.sys.country}`;
+        suggestion.addEventListener('click', () => {
+            getWeather(`${city.name}, ${city.sys.country}`);
+            suggestions.innerHTML = '';
+        });
+        suggestions.appendChild(suggestion);
+    });
+});
+
 
 searchBox.addEventListener('keypress', setQuery);
 
@@ -83,4 +115,17 @@ async function getWeatherByGeo(latitude, longitude) {
 
 window.addEventListener("load", function() {
     getWeather("Copenhagen");
+});
+
+searchField.addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const filteredSuggestions = suggestions.filter(function(suggestion) {
+        return suggestion.toLowerCase().startsWith(searchTerm);
+    });
+    suggestionsList.innerHTML = '';
+    for (const suggestion of filteredSuggestions) {
+        const suggestionElement = document.createElement('li');
+        suggestionElement.textContent = suggestion;
+        suggestionsList.appendChild(suggestionElement);
+    }
 });
