@@ -51,22 +51,33 @@ searchBox.addEventListener('input', async function() {
     const searchTerm = this.value;
     const cities = await searchCities(searchTerm);
     suggestions.innerHTML = '';
-    cities.list.forEach(city => {
-        const suggestion = document.createElement('div');
-        suggestion.innerText = `${city.name}, ${city.sys.country}`;
-        suggestion.addEventListener('click', () => {
-            getWeather(`${city.name}, ${city.sys.country}`);
-            suggestions.innerHTML = '';
+    if (cities.list.length > 0) {
+        cities.list.forEach(city => {
+            const suggestion = document.createElement('div');
+            suggestion.innerText = `${city.name}, ${city.sys.country}`;
+            suggestion.addEventListener('click', () => {
+                getWeather(`${city.name}, ${city.sys.country}`);
+                suggestions.innerHTML = '';
+                searchBox.value = '';
+            });
+            suggestions.appendChild(suggestion);
         });
-        suggestions.appendChild(suggestion);
-    });
+    } else {
+        const noResult = document.createElement('div');
+        noResult.innerText = 'No results';
+        suggestions.appendChild(noResult);
+    }
 });
 
 searchBox.addEventListener('keyup', function(event) {
     if (event.key === 'Enter') {
-        suggestions.innerHTML = '';
+        if (suggestions.firstElementChild.innerText !== "No results") {
+            suggestions.innerHTML = '';
+        }
     }
 });
+
+
 
 
 
